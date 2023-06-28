@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.appBarMain.toolbar)
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home
