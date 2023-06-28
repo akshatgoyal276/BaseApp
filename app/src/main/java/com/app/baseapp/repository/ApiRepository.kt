@@ -10,5 +10,5 @@ class ApiRepository
 @Inject constructor(
     private val apiServices: ApiService
 ) {
-    fun getAppList(data: GetAppListRequestModal) = apiServices.getAppList(data)
+    fun getAppList(category: String) = apiServices.getAppList(GetAppListRequestModal(category))
 }

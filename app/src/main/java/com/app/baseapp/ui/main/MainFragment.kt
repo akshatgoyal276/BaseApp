@@ -6,12 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.app.baseapp.adapter.ListAdapter
-import com.app.baseapp.api.enqueue
-import com.app.baseapp.data.modals.requestModals.GetAppListRequestModal
 import com.app.baseapp.databinding.FragmentMainBinding
-import com.app.baseapp.repository.ApiRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -31,13 +27,11 @@ class MainFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         binding.appListRecyclerView.adapter = adapter
-        adapter.setAdapterList(listOf("","","","","","","","","",))
+        adapter.setAdapterList(listOf("", "", "", "", "", "", "", "", ""))
         return binding.root
     }
 

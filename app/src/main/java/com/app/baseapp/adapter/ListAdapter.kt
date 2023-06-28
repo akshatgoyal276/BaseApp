@@ -20,7 +20,7 @@ class ListAdapter @Inject constructor() :
         notifyItemRangeChanged(0, list.size)
     }
 
-    inner class ListItemBindViewHolder(val binding: ListItemLayoutBinding) :
+    inner class ListItemBindViewHolder(private val binding: ListItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: String, position: Int) {

@@ -1,5 +1,6 @@
 package com.app.baseapp.api
 
+import android.util.Log
 import com.app.baseapp.data.modals.dataModals.AppData
 import com.app.baseapp.data.modals.requestModals.GetAppListRequestModal
 import com.app.baseapp.data.modals.responseModals.CustomListResponseModal
@@ -16,16 +17,19 @@ interface ApiService {
     ): Call<CustomListResponseModal<AppData>>
 }
 
-fun <T> Call<T>.enqueue(onFailure: () -> Unit = { }, onSuccess: (T) -> Unit) {
+fun <T> Call<T>.enqueue(onComplete: (T?) -> Unit) {
     this.enqueue(object : Callback<T> {
         override fun onResponse(call: Call<T>, response: Response<T>) {
-            response.body()?.let {
-                onSuccess(it)
-            }
+            if(response.isSuccessful){
+                response.body()?.let {
+                    onComplete(it)
+                }
+            } else onComplete(null)
         }
 
         override fun onFailure(call: Call<T>, t: Throwable) {
-            onFailure()
+            Log.d("API Failure", "error: $t")
+            onComplete(null)
         }
     })
 }

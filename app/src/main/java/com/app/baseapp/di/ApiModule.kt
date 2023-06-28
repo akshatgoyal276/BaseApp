@@ -26,7 +26,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideBaseUrl() = "http://139.59.19.80"
+    fun provideBaseUrl() = BuildConfig.BASE_URL
 
     @Provides
     @Singleton

@@ -8,7 +8,6 @@ import dagger.hilt.android.HiltAndroidApp
 class MainApplication: Application() {
     companion object {
         var instance: MainApplication? = null
-//            private set
         val context: Context?
             get() = instance
     }
