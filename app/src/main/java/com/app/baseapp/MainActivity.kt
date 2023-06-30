@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home
+                R.id.menu_item_main
             ),  binding.drawerLayout
         )
         setupActionBarWithNavController(getNavController(), appBarConfiguration)
