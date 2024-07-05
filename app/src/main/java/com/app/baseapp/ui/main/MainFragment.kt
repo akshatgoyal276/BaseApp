@@ -5,34 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.app.baseapp.adapter.ListAdapter
+import com.app.baseapp.base.BaseFragment
 import com.app.baseapp.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment<FragmentMainBinding>() {
 
-    private lateinit var binding: FragmentMainBinding
+    override fun setBinding() = FragmentMainBinding.inflate(layoutInflater)
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModels()
 
     @Inject
     lateinit var adapter: ListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMainBinding.inflate(layoutInflater, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.appListRecyclerView.adapter = adapter
         adapter.setAdapterList(listOf("", "", "", "", "", "", "", "", ""))
-        return binding.root
     }
 
 }

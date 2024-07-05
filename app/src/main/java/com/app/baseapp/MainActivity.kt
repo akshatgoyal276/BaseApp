@@ -9,26 +9,23 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.app.baseapp.base.BaseActivity
 import com.app.baseapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    override fun setBinding() = ActivityMainBinding.inflate(layoutInflater)
 
     companion object{
         lateinit var activity : MainActivity
     }
 
-    private lateinit var binding: ActivityMainBinding
-
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+    override fun onViewReady(savedInstanceState: Bundle?) {
+        super.onViewReady(savedInstanceState)
         setSupportActionBar(binding.appBarMain.toolbar)
         appBarConfiguration = AppBarConfiguration(
             setOf(
