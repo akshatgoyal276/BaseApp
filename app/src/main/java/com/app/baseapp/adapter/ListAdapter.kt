@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.baseapp.databinding.ListItemLayoutBinding
-import com.app.baseapp.utils.onClick
+import com.app.baseapp.utils.extensionFunctions.click
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,7 +25,7 @@ class ListAdapter @Inject constructor() :
 
         fun bind(item: String, position: Int) {
             binding.tvText.text = "$position Item"
-            binding.tvText.onClick {
+            binding.tvText.click {
                 onClick(item)
             }
         }

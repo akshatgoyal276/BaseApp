@@ -4,11 +4,13 @@ import android.app.Application
 import android.content.Context
 import dagger.hilt.android.HiltAndroidApp
 
+val applicationContext = MainApplication.instance.applicationContext
+
 @HiltAndroidApp
 class MainApplication: Application() {
     companion object {
-        var instance: MainApplication? = null
-        val context: Context?
+        lateinit var instance: MainApplication
+        val context: Context
             get() = instance
     }
 
